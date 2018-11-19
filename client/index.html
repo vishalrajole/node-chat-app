@@ -7,4 +7,15 @@
   <body>
     <p>Server is up...</p>
   </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  var socket = io();
+socket.on("connect", () => {
+  console.log("connected to socket connection");
+});
+
+socket.on("disconnect", () => {
+  console.log("disconnected to socket connection");
+});
+</script>
 </html>
