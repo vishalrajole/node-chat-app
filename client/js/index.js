@@ -5,8 +5,24 @@ socket.on("connect", function() {
 
 socket.on("newMessage", function(data) {
   console.log("message received:", data);
+  var li = $("<li></li>");
+  li.text(`${data.from}: ${data.text}`);
+  $("#messages").append(li);
 });
 
 socket.on("disconnect", function() {
   console.log("disconnected to socket connection");
+});
+
+$("#message-form").on("submit", function(e) {
+  console.log("isideaklsdn");
+  e.preventDefault();
+  socket.emit(
+    "createMessage",
+    {
+      from: "User",
+      text: $("[name=message]").val()
+    },
+    function() {}
+  );
 });
